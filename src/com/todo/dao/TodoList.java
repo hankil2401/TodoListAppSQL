@@ -180,7 +180,7 @@ public class TodoList {
 		PreparedStatement pstmt;
 		keyword = "%"+keyword+"%";
 		try {
-			String sql = "SELECT * FROM list WHERE title like ? or memo like ?";
+			String sql = "SELECT * FROM list WHERE title like ? or memo like ? COLLATE NOCASE";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, keyword);
 			pstmt.setString(2, keyword);
