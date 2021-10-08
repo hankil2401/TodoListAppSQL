@@ -15,7 +15,6 @@ public class TodoMain {
 		l.importData("todolist.txt");
 		boolean isList = false;
 		boolean quit = false;
-		TodoUtil.loadList(l, "todolist.txt");
 		Menu.displaymenu();
 		do {
 			Menu.prompt();
@@ -27,57 +26,60 @@ public class TodoMain {
 				TodoUtil.createItem(l);
 				break;
 			
-//			case "del":
-//				TodoUtil.deleteItem(l);
-//				break;
-//				
-//			case "edit":
-//				TodoUtil.updateItem(l);
-//				break;
+			case "del":
+				TodoUtil.deleteItem(l);
+				break;
 				
+			case "edit":
+				TodoUtil.updateItem(l);
+				break;
+	
 			case "ls":
 				TodoUtil.listAll(l);
 				break;
 				
 			case "find":
-				String str = sc.next();
-				TodoUtil.find(l, str);
+				String str = sc.nextLine().trim();
+				TodoUtil.findList(l, str);
 				break;
 				
 			case "find_cate":
-				String str2 = sc.next();
-				TodoUtil.find_cate(l, str2);
+				String cate = sc.nextLine().trim();
+				TodoUtil.findCateList(l, cate);
 				break;
 				
 			case "ls_cate":
-				TodoUtil.ls_cate(l);
+				TodoUtil.listCateAll(l);
 				break;
 
-//			case "ls_name_asc":
-//				l.sortByName();
-//				System.out.println("The list is sorted by name.");
-//				isList = true;
-//				break;
-//
-//			case "ls_name_desc":
-//				l.sortByName();
-//				l.reverseList();
-//				System.out.println("The list is sorted by name - reversed.");
-//				isList = true;
-//				break;
-//				
-//			case "ls_date":
-//				l.sortByDate();
-//				System.out.println("The list is sorted by date.");
-//				isList = true;
-//				break;
-//				
-//			case "ls_date_desc":
-//				l.sortByDate();
-//				l.reverseList();
-//				System.out.println("The list is sorted by date - reversed.");
-//				isList = true;
-//				break;
+			case "ls_name":
+				System.out.println("The list is sorted by name.");
+				TodoUtil.listAll(l, "title", 1);
+				break;
+
+			case "ls_name_desc":
+				System.out.println("The list is sorted by name - reversed.");
+				TodoUtil.listAll(l, "title", 0);
+				break;
+				
+			case "ls_date":
+				System.out.println("The list is sorted by date.");
+				TodoUtil.listAll(l, "due_date", 1);
+				break;
+				
+			case "ls_date_desc":
+				System.out.println("The list is sorted by date - reversed.");
+				TodoUtil.listAll(l, "due_date", 0);
+				break;
+				
+			case "comp":
+				int index = sc.nextInt();
+				TodoUtil.completeItem(l, index);
+				break;
+				
+			case "ls_comp":
+				System.out.println("The list where all items are completed.");
+				TodoUtil.listAll(l, 1);
 
 			case "help":
 				Menu.displaymenu();

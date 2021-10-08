@@ -10,6 +10,7 @@ public class TodoItem {
     private String category;
     private String due_date;
     private int id;
+    private int is_completed;
 
 
     public TodoItem(String title, String desc, String category, String due_date){
@@ -27,9 +28,26 @@ public class TodoItem {
         this.category=category;
         this.due_date=due_date;
     }
+    public TodoItem(int id, String title, String desc, String date, String category, String due_date){
+    	this.id=id;
+        this.title=title;
+        this.desc=desc;
+        this.current_date=date;
+        this.category=category;
+        this.due_date=due_date;
+    }
+    public TodoItem(int id, String title, String desc, String date, String category, String due_date, int is_completed){
+    	this.id=id;
+        this.title=title;
+        this.desc=desc;
+        this.current_date=date;
+        this.category=category;
+        this.due_date=due_date;
+        this.is_completed = is_completed;
+    }
     
     public String toSaveString() {
-    	return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date +"\n";
+    	return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date + "##" + is_completed+"\n";
     }
     
     public String getTitle() {
@@ -74,8 +92,17 @@ public class TodoItem {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getIs_completed() {
+		return is_completed;
+	}
+	public void setIs_completed(int is_completed) {
+		this.is_completed = is_completed;
+	}
 	@Override
 	public String toString() {
 		return id + " " + "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+	}
+	public String toString1() {
+		return id + " " + "[" + category + "] " + title + "[V]" + " - " + desc + " - " + due_date + " - " + current_date;
 	}
 }
