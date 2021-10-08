@@ -80,6 +80,7 @@ public class TodoMain {
 			case "ls_comp":
 				System.out.println("The list where all items are completed.");
 				TodoUtil.listAll(l, 1);
+				break;
 
 			case "help":
 				Menu.displaymenu();
